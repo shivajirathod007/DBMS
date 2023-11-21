@@ -1,0 +1,19 @@
+DECLARE
+   CURSOR er IS
+      SELECT eid, name, emp_dpt
+      FROM emp
+      WHERE emp_dpt = 'SALS';
+
+   id emp.eid%TYPE;
+   ename emp.name%TYPE;
+   emp_d emp.emp_dpt%TYPE;
+   begin 
+   open er;
+   loop
+   fetch er into id,ename,emp_d;
+   exit when er%notfound;
+   dbms_output.put_line (id || ename||emp_d );
+   end loop;
+   close er;
+   end;
+   \
