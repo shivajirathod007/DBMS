@@ -1,0 +1,10 @@
+-- Assuming you're using SQL Server syntax, adjust for your specific database system
+
+CREATE PROCEDURE UpdateSalaryBy25Percent
+AS
+BEGIN
+    UPDATE Emp
+    SET Salary = Salary * 1.25;
+END;
+   /
+   
