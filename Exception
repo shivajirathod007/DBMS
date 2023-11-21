@@ -1,0 +1,24 @@
+DECLARE
+ InvalidNumber EXCEPTION;
+ PRAGMA EXCEPTION_INIT(InvalidNumber, -20001);
+ -- Declare a variable to store user input
+ user_number NUMBER;
+BEGIN
+ -- Accept a number from the user
+ user_number := &user_input; -- You'll be prompted to enter a number when you run the 
+10
+script.
+ -- Check if the number is odd
+ IF MOD(user_number, 2) = 1 THEN
+ -- Raise the user-defined exception
+ RAISE InvalidNumber;
+ ELSE
+ -- Print a message for even numbers
+ DBMS_OUTPUT.PUT_LINE('The entered number ' || user_number || ' is even.');
+ END IF;
+EXCEPTION
+ WHEN InvalidNumber THEN
+ -- Handle the user-defined exception
+ DBMS_OUTPUT.PUT_LINE('Invalid number: Odd numbers are not allowed.');
+END;
+/
